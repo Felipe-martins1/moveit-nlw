@@ -21,6 +21,8 @@
   position: relative;
 
   text-align: center;
+
+  animation: modalUp 0.7s;
 }
 
 .container header {
@@ -50,4 +52,22 @@
   border: 0;
 
   font-size: 0;
+}
+
+@keyframes modalUp {
+  0% {
+    transform: translateY(200px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes modalDown {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(200px);
+  }
 }
