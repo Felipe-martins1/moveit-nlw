@@ -11,6 +11,9 @@ import { CountdownProvider } from "../contexts/CountdownContext";
 import { GetServerSideProps } from "next";
 import { ChallengesProvider } from "../contexts/ChallengesContext";
 
+import { IoMoonOutline, IoMoonSharp } from "react-icons/io5";
+import { useState } from "react";
+
 interface HomeProps {
   level: number;
   currentExperience: number;
@@ -18,6 +21,17 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
+  const [darkModeOn, setDarkModeOn] = useState(false);
+  const LightcolorMode = () => {
+    const $html = document.querySelector("html");
+    $html.classList.remove("dark-mode");
+    setDarkModeOn(false);
+  };
+  const DarkcolorMode = () => {
+    const $html = document.querySelector("html");
+    $html.classList.add("dark-mode");
+    setDarkModeOn(true);
+  };
   return (
     <ChallengesProvider
       level={props.level}
@@ -29,7 +43,22 @@ export default function Home(props: HomeProps) {
           <title>Início | move.it</title>
         </Head>
         <ExperienceBar />
-
+        <div className={styles.darkMode}>
+          <div>
+            {!darkModeOn && (
+              <IoMoonOutline
+                onClick={DarkcolorMode}
+                style={{ fontSize: "2.8rem", cursor: "pointer" }}
+              />
+            )}
+            {darkModeOn && (
+              <IoMoonSharp
+                onClick={LightcolorMode}
+                style={{ fontSize: "2.8rem", cursor: "pointer" }}
+              />
+            )}
+          </div>
+        </div>
         <CountdownProvider>
           <section>
             <div>

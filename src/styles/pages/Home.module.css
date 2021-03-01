@@ -16,3 +16,16 @@
   gap: 6.25rem;
   align-content: center;
 }
+
+.container .darkMode {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+
+  color: var(--title);
+}
+
+.container .darkMode > div > div {
+  display: flex;
+  width: 0;
+}
